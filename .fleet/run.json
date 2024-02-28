@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "python",
+            "name": "Run this Python file",
+            "file": "$FILE$",
+            "arguments": []
+        },
+        
+    ]
+}
