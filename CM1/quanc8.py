@@ -25,12 +25,22 @@ def quanc8_wrapper(fun, a, b, abserr, relerr):
     return resultR.value, errestR.value, nofunR.value, posnR.value, flag.value
 
 
-def my_func(x):
+def f1(x):
     return abs(x - tan(x)) ** -0.5
 
 
-result, errest, nofun, posn, flag = quanc8_wrapper(
-    ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double)(my_func), 2.0, 5.0, 1e-6, 1e-6
-)
-print(result, errest, nofun, posn, flag)
-    
+def f2(x):
+    return abs(x - tan(x)) ** -1
+
+
+print('m\t\t', 'resultR\t\t\t', 'errestR\t\t\t', 'nofunR\t', 'posnR\t', 'flag', sep='')
+print('-0.5\t',
+      *quanc8_wrapper(
+          ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double)(f1), 2.0, 5.0, 1e-6, 1e-6
+      ),
+      sep='\t')
+print('-1\t',
+      *quanc8_wrapper(
+          ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double)(f2), 2.0, 5.0, 1e-6, 1e-6
+      ),
+      sep='\t')
