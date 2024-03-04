@@ -44,3 +44,14 @@ print('-1\t',
           ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double)(f2), 2.0, 5.0, 1e-6, 1e-6
       ),
       sep='\t')
+
+print("""
+eps\t first_part\t second_part\t sum""")
+for eps in 1e-5, 1e-15, 0:
+    first_part = quanc8_wrapper(
+        ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double)(f2), 2.0, 4.49340945790906417530788093-eps, 1e-6, 1e-6
+    )[0]
+    second_part = quanc8_wrapper(
+        ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double)(f2), 4.49340945790906417530788093+eps, 5, 1e-6, 1e-6
+    )[0]
+    print(f"{eps}\t %.6f\t %.6f\t %.6f" % (first_part, second_part, first_part + second_part))
