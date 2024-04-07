@@ -2,7 +2,7 @@ import ctypes
 from math import *
 
 # Load the shared library
-lib = ctypes.CDLL('./quanc8.dll')
+lib = ctypes.CDLL('./common/quanc8.dll')
 
 # Define the argument types and return type of the quanc8 function
 lib.quanc8.argtypes = [ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double),
